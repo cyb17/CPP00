@@ -1,33 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 14:34:05 by yachen            #+#    #+#             */
-/*   Updated: 2024/01/25 16:06:14 by yachen           ###   ########.fr       */
+/*   Created: 2024/01/26 12:14:38 by yachen            #+#    #+#             */
+/*   Updated: 2024/01/26 17:30:15 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
+#include "PhoneBook.hpp"
 
-int	main(int argc, char **argv)
-{
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
-	else if (argc > 1)
-	{
-		argv++;
-		while (*argv)
-		{
-			std::cout << *argv++;
-			if (*argv)
-				std::cout << ' ';
-			else 
-				std::cout << '\n';
-		}
-	}
-	return (0);
-}
+
