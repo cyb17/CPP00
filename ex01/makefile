@@ -6,7 +6,7 @@
 #    By: yachen <yachen@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 14:21:49 by yachen            #+#    #+#              #
-#    Updated: 2024/01/26 10:39:42 by yachen           ###   ########.fr        #
+#    Updated: 2024/01/29 15:26:34 by yachen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = c++
 
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-SRC = PhoneBook.cpp
+SRC = PhoneBook.cpp main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

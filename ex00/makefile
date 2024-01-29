@@ -6,17 +6,17 @@
 #    By: yachen <yachen@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 14:21:49 by yachen            #+#    #+#              #
-#    Updated: 2024/01/26 10:56:53 by yachen           ###   ########.fr        #
+#    Updated: 2024/01/29 13:42:50 by yachen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Megaphone
+NAME = megaphone
 
 CC = c++
 
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-SRC = Megaphone.cpp
+SRC = megaphone.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -24,9 +24,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 		@echo "\e[32m\n==================================="
-		@echo "\e[32mCompiling Megaphone----------------"
+		@echo "\e[32mCompiling megaphone----------------"
 		@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-		@echo "\e[32m---created with success : Megaphone"
+		@echo "\e[32m---created with success : megaphone"
 		@echo "\e[32m===================================\n\e[0m"
 
 %.o: %.cpp
@@ -34,16 +34,16 @@ $(NAME): $(OBJ)
 
 clean:
 	@echo "\e[32m\n====================="
-	@echo "\e[32mCleaning Megaphone----"
+	@echo "\e[32mCleaning megaphone----"
 	@rm -rf $(OBJ)
-	@echo "\e[32m-----Megaphone Cleaned"
+	@echo "\e[32m-----megaphone Cleaned"
 	@echo "\e[32m=====================\n\e[0m"
 
 fclean:
 	@echo "\e[32m\n====================="
-	@echo "\e[32mCleaning Megaphone----"
+	@echo "\e[32mCleaning megaphone----"
 	@rm -rf $(OBJ)
-	@echo "\e[32m-----Megaphone Cleaned"
+	@echo "\e[32m-----megaphone Cleaned"
 	@rm -rf $(NAME)
 	@echo "\e[32m=====================\n\e[0m"
 

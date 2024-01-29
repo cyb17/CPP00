@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 10:47:26 by yachen            #+#    #+#             */
-/*   Updated: 2024/01/26 17:34:05 by yachen           ###   ########.fr       */
+/*   Updated: 2024/01/29 16:45:36 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,21 @@
 
 class Contact
 {
-	std::string	firstname;
-	std::string	lastname;
-	std::string	nickname;
-	std::string	phonenumber;
-	std::string	dark_secret;
+	protected:
+		std::string	firstname;
+		std::string	lastname;
+		std::string	nickname;
+		std::string	phonenumber;
+		std::string	dark_secret;
 };
 
-class PhoneBook
+class PhoneBook : public Contact
 {
 	public:
-		void		add(Contact &list, int &nbcontact);
+		void		add(Contact &new_cont);
 		void		search(Contact &list);
-		void		exit(void);
 	private:
-		static int	nbcontact;
-		Contact		contactsList[8];
+		Contact		list[8];
 };
 
 #endif

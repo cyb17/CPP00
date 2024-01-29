@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 14:34:05 by yachen            #+#    #+#             */
-/*   Updated: 2024/01/26 10:56:53 by yachen           ###   ########.fr       */
+/*   Created: 2024/01/29 13:53:06 by yachen            #+#    #+#             */
+/*   Updated: 2024/01/29 16:46:18 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
+#include "PhoneBook.hpp"
 
 int	main(int argc, char **argv)
 {
-	int	i;
+	int			i = 0;
+	int			oldone = 0;
+	std::string	command;
+	PhoneBook	phonebook;
 	
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
-	else if (argc > 1)
+	while (1)
 	{
-		argv++;
-		while (*argv)
+		std::cout << "Please, enter a command" << std::endl;
+		std::cin >> command;
+		if (!strcmp(command, "EXIT"))
+			break;
+		else if (!strcmp(command, "ADD"))
 		{
-			i = 0;
-			while ((*argv)[i])
-			{
-				(*argv)[i] = toupper((*argv)[i]);
-				i++;
-			}
-			std::cout << *argv++;
-			if (*argv)
-				std::cout << ' ';
-			else 
-				std::cout << '\n';
+			add(phonebook.list[i++]);
+			if (i > 7)
+				i = oldone++;
+			if (oldone == 8)
+				oldone = 0;
 		}
+		else if (!strcmp(command, "SEARCH"))
+			search(Contact &list);
 	}
 	return (0);
 }
