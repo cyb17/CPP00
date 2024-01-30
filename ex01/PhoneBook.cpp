@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:14:38 by yachen            #+#    #+#             */
-/*   Updated: 2024/01/30 11:42:30 by yachen           ###   ########.fr       */
+/*   Updated: 2024/01/30 12:52:57 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,37 @@ void	Contact::fill_contact_info()
 	std::cin >> dark_secret;
 }
 
-void	Contact::display_contact_name()
+void	Contact::display_point(std::string &str) const
 {
-	std::cout << firstname << "|" << lastname << "|" << nickname << "|" <<std::endl;
+	for (int i = 0; i < 9; i++)
+		std::cout << str[i];
+	std::cout << ".";
+}
+
+void	Contact::display_name(std::string &str) const
+{
+	for (int i = 0; i < 10; i++)
+		std::cout << str[i];
+}
+
+void	Contact::display_contact_name(int index)
+{
+	std::cout << index << "|";
+	if (firstname.length() > 10)
+		display_point(firstname);
+	else
+		display_name(firstname);
+	std::cout << "|";
+	if (firstname.length() > 10)
+		display_point(lastname);
+	else
+		display_name(lastname);
+	std::cout << "|";
+	if (firstname.length() > 10)
+		display_point(nickname);
+	else
+		display_name(nickname);
+	std::cout << "|" << std::endl;
 }
 
 void	Contact::display_contact_info()
@@ -52,14 +80,11 @@ void	PhoneBook::add()
 
 void	PhoneBook::search()
 {
-	int	i;
-	for (i = 0; i < 8; i++)
-	{
-		std::cout << i << "|";
-		list[i].display_contact_name();
-	}
+	std::string	index;
+	for (int i = 0; i < 8; i++)
+		list[i].display_contact_name(i);
 	std::cout << "Please, enter the contact index to display: ";
-	std::cin >> i;
-	list[i].display_contact_info();
-	
+	std::cin >> index;
+	if ()
+	list[index].display_contact_info();
 }

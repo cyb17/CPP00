@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 10:47:26 by yachen            #+#    #+#             */
-/*   Updated: 2024/01/30 11:41:01 by yachen           ###   ########.fr       */
+/*   Updated: 2024/01/30 12:50:43 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ class Contact
 {
 	public: 
 		void	fill_contact_info();
-		void	display_contact_name();
+		void	display_point(std::string &str) const;
+		void	display_name(std::string &str) const;
+		void	display_contact_name(int index) const;
 		void	display_contact_info();
 	private:
 		std::string	firstname;
