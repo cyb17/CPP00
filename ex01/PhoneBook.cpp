@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:14:38 by yachen            #+#    #+#             */
-/*   Updated: 2024/01/29 18:41:37 by yachen           ###   ########.fr       */
+/*   Updated: 2024/01/30 11:42:30 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,52 @@
 
 void	Contact::fill_contact_info()
 {
-	Contact	new_contact;
-
-	std::cout << "Please, enter informations of new contact" << std::endl;
+	std::cout << "Please, enter informations of new contact." << std::endl;
 	std::cout << "First name : ";
-	std::cin >> new_contact.firstname;
+	std::cin >> firstname;
 	std::cout << "Last name : ";
-	std::cin >> new_contact.lastname;
+	std::cin >> lastname;
 	std::cout << "Nick name : ";
-	std::cin >> new_contact.nickname;
+	std::cin >> nickname;
 	std::cout << "Phone number : ";
-	std::cin >> new_contact.phonenumber;
+	std::cin >> phonenumber;
 	std::cout << "Darkest secret : ";
-	std::cin >> new_contact.dark_secret;
+	std::cin >> dark_secret;
 }
 
-void	PhoneBook::add(Contact &ref_contact)
+void	Contact::display_contact_name()
 {
-	ref_contact.fill_contact_info();
+	std::cout << firstname << "|" << lastname << "|" << nickname << "|" <<std::endl;
+}
+
+void	Contact::display_contact_info()
+{
+	std::cout << "First name : " << firstname << std::endl;
+	std::cout << "Last name : " << lastname << std::endl;
+	std::cout << "Nick name : " << nickname << std::endl;
+	std::cout << "Phone number : " << phonenumber << std::endl;
+	std::cout << "Darkest secret : " << dark_secret << std::endl;
+}
+
+void	PhoneBook::add()
+{
+	list[count++].fill_contact_info();
+	if (count > 7)
+		count = oldone++;
+	if (oldone == 8)
+		oldone = 0;
+}
+
+void	PhoneBook::search()
+{
+	int	i;
+	for (i = 0; i < 8; i++)
+	{
+		std::cout << i << "|";
+		list[i].display_contact_name();
+	}
+	std::cout << "Please, enter the contact index to display: ";
+	std::cin >> i;
+	list[i].display_contact_info();
+	
 }
