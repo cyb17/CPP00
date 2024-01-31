@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:14:38 by yachen            #+#    #+#             */
-/*   Updated: 2024/01/31 14:50:50 by yachen           ###   ########.fr       */
+/*   Updated: 2024/01/31 17:52:17 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	Contact::display_contact_info()
 	std::cout << std::endl;
 }
 
-PhoneBook::PhoneBook() : count(0), oldone(0)
+PhoneBook::PhoneBook() : count(0)
 {
 }
 
@@ -102,11 +102,8 @@ PhoneBook::~PhoneBook()
 
 void	PhoneBook::add()
 {
-	list[count++].fill_contact_info();
-	if (count > 7)
-		count = oldone++;
-	if (oldone == 8)
-		oldone = 0;
+	list[count % 8].fill_contact_info();
+		count++;
 	std::cout << "New contact added successfully !" << std::endl;
 }
 

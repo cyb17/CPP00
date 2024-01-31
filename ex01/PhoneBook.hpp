@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 10:47:26 by yachen            #+#    #+#             */
-/*   Updated: 2024/01/31 14:53:01 by yachen           ###   ########.fr       */
+/*   Updated: 2024/01/31 17:52:34 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ class PhoneBook
 	private:
 		Contact		list[8];
 		int			count;
-		int			oldone;
 };
 
 #endif
