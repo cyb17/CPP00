@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 12:14:38 by yachen            #+#    #+#             */
-/*   Updated: 2024/01/31 12:44:03 by yachen           ###   ########.fr       */
+/*   Updated: 2024/01/31 14:50:50 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ std::string	Contact::get_info(std::string str)
 }
 void	Contact::fill_contact_info()
 {	
-	std::cout << "Please, enter informations of new contact.\n" << std::endl;
+	std::cout << "\nEnter informations of new contact.\n" << std::endl;
 	std::cout << "First name : ";
 	firstname = get_info("First name : ");
 	std::cout << "Last name : ";
@@ -55,35 +55,30 @@ void	Contact::fill_contact_info()
 	darkestsecret = get_info("Darkest secret : ");
 }
 
-void	Contact::display_point(std::string str)
+void	Contact::name_format(std::string str) const
 {
-	std::string	extract = str.substr(0, 9);
-	std::cout << std::setw(10) << std::right << extract << ".";
+	std::string	extract;
+	
+	if (str.length() > 10)
+	{
+		extract = str.substr(0, 9);
+		std::cout << std::setw(9) << std::right << extract << ".";
+	}
+	else
+	{
+		extract = str.substr(0, str.length());
+		std::cout << std::setw(10) << std::right << extract;
+	}
 }
 
-void	Contact::display_name(std::string str)
-{
-	std::string	extract = str.substr(0, str.length());
-	std::cout << std::setw(10) << std::right << extract;
-}
-
-void	Contact::display_contact_name(int index)
+void	Contact::display_contact_name(int index) const
 {
 	std::cout << index << "|";
-	if (firstname.length() > 10)
-		display_point(firstname);
-	else
-		display_name(firstname);
+	name_format(firstname);
 	std::cout << "|";
-	if (lastname.length() > 10)
-		display_point(lastname);
-	else
-		display_name(lastname);
+	name_format(lastname);
 	std::cout << "|";
-	if (nickname.length() > 10)
-		display_point(nickname);
-	else
-		display_name(nickname);
+	name_format(nickname);
 	std::cout << "|" << std::endl;
 }
 
@@ -94,34 +89,52 @@ void	Contact::display_contact_info()
 	std::cout << "Nick name : " << nickname << std::endl;
 	std::cout << "Phone number : " << phonenumber << std::endl;
 	std::cout << "Darkest secret : " << darkestsecret << std::endl;
+	std::cout << std::endl;
 }
 
-// PhoneBook::PhoneBook()
-// {
-// 	count = 0;
-// 	oldone = 0;
-// }
+PhoneBook::PhoneBook() : count(0), oldone(0)
+{
+}
 
-// PhoneBook::~PhoneBook()
-// {
-// }
+PhoneBook::~PhoneBook()
+{
+}
 
 void	PhoneBook::add()
 {
-	list[this->count++].fill_contact_info();
-	if (this->count > 7)
-		this->count = this->oldone++;
-	if (this->oldone == 8)
-		this->oldone = 0;
+	list[count++].fill_contact_info();
+	if (count > 7)
+		count = oldone++;
+	if (oldone == 8)
+		oldone = 0;
+	std::cout << "New contact added successfully !" << std::endl;
 }
 
-// void	PhoneBook::search()
-// {
-// 	// std::string	index;
-// 	for (int i = 0; i < 8; i++)
-// 		list[i].display_contact_name(i);
-// 	// std::cout << "Please, enter the contact index to display: ";
-// 	// std::cin >> index;
-// 	// if ()
-// 	// list[index].display_contact_info();
-// }
+int	PhoneBook::is_index(std::string &line) const
+{	
+	if (line.empty() || line.length() > 1 || std::isdigit(line[0]) == false
+		|| line[0] - 48 > 7)
+		return (false);
+	return (true);
+}
+
+void	PhoneBook::search()
+{
+	std::string	line;
+	int			index;
+	
+	for (int i = 0; i < 8; i++)
+		list[i].display_contact_name(i);
+	std::cout << std::endl;
+	std::cout << "Enter contact's index to display it : ";
+	std::getline(std::cin, line);
+	std::cout << std::endl;
+	while (!is_index(line))
+	{
+		line.clear();
+		std::cout << "Index must be a number between 0-7, try again.\n" << "Enter a index : ";
+		std::getline(std::cin, line);
+	}
+	index = line[0] - 48;
+	list[index].display_contact_info();
+}

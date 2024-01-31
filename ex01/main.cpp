@@ -6,45 +6,41 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 13:53:06 by yachen            #+#    #+#             */
-/*   Updated: 2024/01/31 12:39:48 by yachen           ###   ########.fr       */
+/*   Updated: 2024/01/31 14:22:04 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-// int	main(int argc, char **argv)
-// {
-// 	std::string	command;
-// 	PhoneBook	phonebook;
-	
-// 	if (argc != 1)
-// 	{
-// 		(void)argv;
-// 		std::cout << "Error: do not execute the program whith arguments." << std::endl;
-// 		return (0);
-// 	}
-// 	while (1)
-// 	{
-// 		std::cout << "Please, enter a command :" << std::endl;
-// 		std::cin >> command;
-// 		if (command == "EXIT")
-// 			break;
-// 		else if (command == "ADD")
-// 			phonebook.add();
-// 		else if (command == "SEARCH")
-// 			phonebook.search();
-// 		else
-// 			std::cout << "Command not valid, try again." << std::endl;
-// 	}
-// 	return (0);
-// }
-
-int	main()
+int	main(int argc, char **argv)
 {
-	Contact	contact;
+	std::string	command;
+	PhoneBook	phonebook;
 	
-	contact.fill_contact_info();
-	contact.display_contact_name(0);
-	contact.display_contact_info();
+	if (argc != 1)
+	{
+		(void)argv;
+		std::cout << "Error: do not execute the program whith arguments." << std::endl;
+		return (0);
+	}
+	std::cout << "Welcome to my awesome PhoneBook !" << std::endl;
+	std::cout << "Usable commands : ADD, SEARCH, EXIT" <<std::endl; 
+	while (1)
+	{
+		std::cout << "\nPlease, enter a command : ";
+		std::getline(std::cin, command);
+		if (command == "EXIT")
+		{
+			std::cout << "Exit successfully !" << std::endl;
+			break;
+		}
+		else if (command == "ADD")
+			phonebook.add();
+		else if (command == "SEARCH")
+			phonebook.search();
+		else
+			std::cout << "Command not exist, try again." << std::endl;
+		command.clear();
+	}
 	return (0);
 }
